@@ -93,6 +93,49 @@ Core.Agent.TicketPhone = (function (TargetNS) {
             return false;
         });
 
+        //add hiding html-elements functionality
+        $('[data-dependingdisplay]').each(function( index, obj ) {
+        	  var data =  $(obj).data('dependingdisplay');
+        	  var error = 0;
+        	  //expecting first level to be "AND" or "OR"
+        	  var affectedids = [];
+        	  for (var junctionl1 in data)
+        	  {
+        		  if (junctionl1 != "AND" && junctionl1 != "OR") 
+        		  {
+        			  	console.log("dependingdisplay junction in level 1 not correct");
+        			  	error++;
+        		  }
+        		  var level2 = data[junctionl1];
+        		  for (var junctionl2 in level2)
+        		  {
+            		  if (junctionl2 != "AND" && junctionl2 != "OR") 
+            		  {
+            			  console.log("dependingdisplay junction in level 2 not correct");
+            			  error++;
+            		  }
+            		  var fielddata = level2[junctionl2];
+            		  for (var fieldid in fielddata)
+            		  {
+            			  if (!$('#'+fieldid).length)
+            			  {
+            				  console.log("dependingdisplay field with id "+fieldid+" does not exist");
+                			  error++;
+            			  } else
+            			  {
+            				  affectedids.push(fieldid);
+            			  }
+            		  }
+        		  }
+        	  }
+        	  if (!error)
+        	  {
+        		  
+        	  }
+        	  
+        });
+        
+        
         // Initialize the ticket action popup.
         Core.Agent.TicketAction.Init();
     };

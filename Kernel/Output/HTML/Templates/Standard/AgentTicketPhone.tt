@@ -273,14 +273,14 @@
                         </div>
                         <div class="Clear"></div>
 
-                        <label>[% Translate("Pending date") | html %]:</label>
-                        <div class="Field">
+                        <label data-dependingdisplay='{"AND":{"AND":{"NextStateID": ["1","2"]}}}'>[% Translate("Pending date") | html %]:</label>
+                        <div data-dependingdisplay='{"AND":{"AND":{"NextStateID": ["1","2"]}}}' class="Field">
                         [% Data.PendingDateString %]
                             <div id="DayError" class="TooltipErrorMessage"><p>[% Translate("Date invalid!") | html %]</p></div>
                             <div id="HourError" class="TooltipErrorMessage"><p>[% Translate("Date invalid!") | html %]</p></div>
                             <p class="FieldExplanation">[% Translate("For all pending* states.") | html %]</p>
                         </div>
-                        <div class="Clear"></div>
+                        <div data-dependingdisplay='{"AND":{"AND":{"NextStateID": ["1","2"]}}}' class="Clear"></div>
 
                         <label for="PriorityID">[% Translate("Priority") | html %]:</label>
                         <div class="Field">
